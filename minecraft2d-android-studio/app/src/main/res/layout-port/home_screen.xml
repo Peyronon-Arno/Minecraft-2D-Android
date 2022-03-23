@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource"
+    android:background="@drawable/island"
+    >
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlayHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/buttonPlayHome"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/black"
+        android:onClick="play"
+        android:text="@string/button_home_play"
+        android:textColor="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/buttonListObject"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/black"
+        android:onClick="viewListObject"
+        android:text="@string/button_home_list"
+        android:textColor="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintStart_toStartOf="@+id/buttonPlayHome"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayHome"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonQuitHome"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/black"
+        android:onClick="quit_app"
+        android:text="@string/button_home_close"
+        android:textColor="@color/white"
+        app:cornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="@+id/buttonListObject"
+        app:layout_constraintStart_toStartOf="@+id/buttonListObject"
+        app:layout_constraintTop_toBottomOf="@+id/buttonListObject" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

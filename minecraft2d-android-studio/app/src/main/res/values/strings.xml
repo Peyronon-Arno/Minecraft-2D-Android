@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Minecraft 2D</string>
+
+    <string name="button_home_play">Jouer</string>
+    <string name="button_home_close">Quitter</string>
+    <string name="button_home_list">Liste d\'items</string>
+
+
+    <string name="button_play_quit">Quitter</string>
+
+    <string name="button_genPetit">Monde petit</string>
+    <string name="button_genMoyen">Monde moyen</string>
+    <string name="button_genGrand">Monde grand</string>
+
+    <string name="method_genPetit">genPetit</string>
+    <string name="method_genMoyen">genMoyen</string>
+    <string name="method_genGrand">genGrand</string>
+
+
+    <string name="leftArrowButton"> ← </string>
+    <string name="rightArrowButton"> → </string>
+    <string name="upArrowButton"> ↑ </string>
+    <string name="retour">Retour</string>
+
+</resources>

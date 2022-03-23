@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+
+    <TextView
+
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:width="20dp"
+        android:height="15dp"
+        android:text=""
+        android:id="@+id/timer_textView"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/buttonQuitPlayingActivity"
+        android:layout_width="85dp"
+        android:layout_height="35dp"
+        android:width="20dp"
+        android:height="15dp"
+        android:onClick="return_home"
+        android:text="@string/retour"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp,UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/buttonMoveLeft"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:text="@string/leftArrowButton"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:onClick="go_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonMoveRight"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:text="@string/rightArrowButton"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:onClick="go_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonMoveLeft" />
+
+    <Button
+        android:id="@+id/buttonMoveUp"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:text="@string/upArrowButton"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:onClick="go_up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
