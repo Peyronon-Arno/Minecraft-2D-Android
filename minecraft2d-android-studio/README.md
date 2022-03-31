@@ -11,6 +11,10 @@ Diagramme de classe :
 
 https://lucid.app/lucidchart/d4064457-4b90-43a9-b023-452153c32381/edit?beaconFlowId=488B0D65C15D575F&page=0_0&invitationId=inv_a601b705-82b4-4091-95c8-b84efeb5f0be#
 
+Diagramme de cas d'utilisation :
+
+https://lucid.app/lucidchart/84b37d3b-a162-4e91-a430-ea515ec28f95/edit?page=0_0&invitationId=inv_ed8b799c-8610-4e96-be38-49b4454a84af#
+
 GG doc pour explication : 
 
 https://docs.google.com/document/d/1YyaZebtapK_gYi19Z99KqcJ2bIYWIGWytR41sBFINWk/edit

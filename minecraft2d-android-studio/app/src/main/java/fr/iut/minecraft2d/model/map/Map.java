@@ -3,6 +3,7 @@ package fr.iut.minecraft2d.model.map;
 
 import android.util.Log;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import fr.iut.minecraft2d.DrawableManager;
@@ -37,7 +38,7 @@ public class Map {
         map = new Bloc[xMax][yMax];
 
 
-        //Couche d'air
+        //Filling everything with Type.air
         for (int x = 0; x < xMax; x++) {
             for (int y = 0; y < yMax; y++) {
                 map[x][y] = new Bloc(Bloc.Type.air, DrawableManager.getInstance().getTexture(DrawableManager.AIR));
@@ -53,25 +54,30 @@ public class Map {
 
         //Couche de stone
         for (int x = 0; x < xMax ; x++) {
-            for(int y = yMax-10; y < yMax-1; y++){
+            for(int y = yMax-20; y < yMax-1; y++){
                 map[x][y] = new Bloc(Bloc.Type.stone, DrawableManager.getInstance().getTexture(DrawableManager.STONE));
             }
         }
 
         //Couche de dirt
-
         for (int x = 0; x < xMax ; x++) {
-            for(int y = 0; y < yMax-10; y++){
+            for(int y = 1; y < yMax-20; y++){
                 map[x][y] = new Bloc(Bloc.Type.dirt, DrawableManager.getInstance().getTexture(DrawableManager.DIRT));
             }
         }
 
+
+
+
             //Couche d'herbe
         for (int x = 0; x < xMax ; x++) {
-            for(int y = 0; y < yMax-34; y++){
+            for(int y = 0; y < yMax-29  ; y++){
                 map[x][y] = new Bloc(Bloc.Type.grass, DrawableManager.getInstance().getTexture(DrawableManager.GRASS));
             }
         }
+
+
+
 
     }
 

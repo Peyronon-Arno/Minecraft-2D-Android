@@ -18,7 +18,6 @@ import fr.iut.minecraft2d.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ListItem.class);
         startActivity(intent);
     }
-
 
     /**
      * Method which will close the app if button close is clicked

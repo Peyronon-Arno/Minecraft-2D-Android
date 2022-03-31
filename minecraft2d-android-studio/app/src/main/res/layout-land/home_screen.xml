@@ -76,5 +76,12 @@
         app:layout_constraintStart_toStartOf="@+id/buttonListObject"
         tools:ignore="UsingOnClickInXml" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="fr.iut.minecraft2d.fragment.InfoFragment"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 
 import java.util.HashMap;
 
-import fr.iut.minecraft2d.Collisionneur;
+import fr.iut.minecraft2d.model.utils.Collisionneur;
 import fr.iut.minecraft2d.GameView;
 import fr.iut.minecraft2d.model.map.Map;
 import fr.iut.minecraft2d.model.player.MovePlayer;
@@ -58,8 +58,6 @@ public class GameManager {
 
     private Map map;
 
-    private Gravity gravity;
-
     /**
      * hashmap of assets
      * For example : bloc textures, player texture.
@@ -80,11 +78,11 @@ public class GameManager {
         this.movePlayer = new MovePlayer(player, collisionneur);
         this.assets = assets;
         this.cellsize = cellsize;
-        this.gravity = new Gravity(player, cellsize);
+
     }
 
     public void setGameView(){
-        gameView.setEnvironment(worldWidth, worldHeight,cellsize, assets, collisionneur, gravity);
+        gameView.setEnvironment(cellsize, assets, collisionneur);
         gameView.setPlayerEnvironment(player, movePlayer);
         gameView.setMapAssets(this.map);
     }
@@ -96,28 +94,20 @@ public class GameManager {
      */
     public void updateCoordoninates(Moves move, GameView gameView ){
 
-
-        //Le principe est si il y a intersection entre le player et un bloc de la map, alors on stop la vitesse
-        //Il faudrait trouver un moyen de convertir un bloc en rect
-        /*if (Rect.intersects(player.getDetectCollision(),map.getBlocInMap((int) player.getX()+1, (int) player.getY()+1))){
-              player.setSpeedX(0);
-              player.setSpeedY(0);
-        }*/
-
         if(move == Moves.LEFT) {
-            movePlayer.moveLeft(player.getX());
+            movePlayer.moveLeft();
             --xBlocIndex;
         }
         if(move == Moves.RIGHT) {
-            movePlayer.moveRight(player.getX());
+            movePlayer.moveRight();
             ++xBlocIndex;
         }
         if(move == Moves.UP) {
-            movePlayer.moveUp(player.getY());
+            movePlayer.moveUp();
             --yBlocIndex;
         }
         if(move == Moves.DOWN) {
-            movePlayer.moveDown(player.getY());
+            movePlayer.moveDown();
             ++yBlocIndex;
         }
 

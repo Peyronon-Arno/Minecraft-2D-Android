@@ -25,16 +25,6 @@ public class Player {
     private double speedY;
 
     /**
-     * Know if payer is turned on the right
-     */
-    private boolean isFacingRight;
-
-    /**
-     * The value of the gravity that affects the player
-     */
-    private int gravity = 15;
-
-    /**
      * Texture for the body of the player
      */
     private Bitmap texture;
@@ -44,10 +34,7 @@ public class Player {
      */
     private Bitmap headTexture;
 
-    /**
-     * Rectangle which will help for collision
-     */
-    private Rect detectCollision;
+
 
     /**
      * Player will start looking at to the right
@@ -56,20 +43,11 @@ public class Player {
      * @parem speed The movement speed of the player
      */
     public Player(Bitmap texture, Bitmap headTexture, int speed){
-        isFacingRight = true;
         coordinates = new Coordinates(0,0);
         this.texture = texture;
         this.headTexture = headTexture;
         this.speedX = speed;
         this.speedY = speed;
-
-
-        //Creation of the detector of collision giving the coordinates of Steve's body
-        detectCollision = new Rect((int) coordinates.x, (int) coordinates.y, texture.getWidth(), texture.getHeight());
-        detectCollision.left = (int) coordinates.x;
-        detectCollision.top = (int) coordinates.y;
-        detectCollision.right = (int) coordinates.x + texture.getWidth();
-        detectCollision.bottom = (int) coordinates.y + texture.getHeight();
     }
 
     /**
@@ -132,21 +110,6 @@ public class Player {
         this.speedY =  speedY;
     }
 
-    /**
-     * To know the orientation of the player
-     * @return isFacingRight
-     */
-    public boolean isFacingRight(){
-        return isFacingRight;
-    }
-
-    /**
-     * Set the knew position of the player
-     * @param facingRight face the player to the right
-     */
-    public void setFacingRight(boolean facingRight) {
-        isFacingRight = facingRight;
-    }
 
     /**
      * get the texture for the body of the player
@@ -162,11 +125,4 @@ public class Player {
      */
     public Bitmap getHeadTexture(){return headTexture;}
 
-    /**
-     * Get the collision detection
-     * @return if it's collide
-     */
-    public Rect getDetectCollision() {
-        return detectCollision;
-    }
 }

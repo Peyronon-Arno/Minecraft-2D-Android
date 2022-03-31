@@ -53,10 +53,6 @@ public class Bloc  {
         this.type = type;
     }
 
-    //faire methode getCollide
-    public boolean isCollidable(){
-        return false;
-    }
 
     /**
      * Enumeration of each type of block that we have

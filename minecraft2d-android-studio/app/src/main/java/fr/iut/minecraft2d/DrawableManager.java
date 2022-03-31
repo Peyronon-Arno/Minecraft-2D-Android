@@ -22,6 +22,9 @@ public class DrawableManager {
     public static final String STONE = "stone";
     public static final String WOOD = "wood";
 
+    /**
+     * Assets of the map
+     */
     public HashMap<String,Bitmap> assets;
 
     /**
@@ -38,7 +41,6 @@ public class DrawableManager {
            DrawableManager.drawableManager = new DrawableManager();
         }
         return DrawableManager.drawableManager;
-
     }
 
     /**

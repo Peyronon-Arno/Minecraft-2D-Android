@@ -10,14 +10,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
-
 import java.util.HashMap;
 
-import fr.iut.minecraft2d.model.Gravity;
 import fr.iut.minecraft2d.model.bloc.Bloc;
 import fr.iut.minecraft2d.model.map.Map;
 import fr.iut.minecraft2d.model.player.MovePlayer;
 import fr.iut.minecraft2d.model.player.Player;
+import fr.iut.minecraft2d.model.utils.Collisionneur;
 import fr.iut.minecraft2d.model.utils.Coordinates;
 
 /**
@@ -25,7 +24,6 @@ import fr.iut.minecraft2d.model.utils.Coordinates;
  */
 @SuppressLint("ViewConstructor")
 public class GameView extends View {
-
 
     /**
      * Player dessiné avec la class player
@@ -42,19 +40,15 @@ public class GameView extends View {
      */
     private Map map;
 
+    /**
+     * Assets for the map
+     */
     private HashMap<String, Bitmap> assets;
 
+    /**
+     * Number of cell which compose the map
+     */
     public int cellSize;
-
-    /**
-     * Size of the world (width)
-     */
-    private int worldWidth;
-
-    /**
-     * Size of the world (height)
-     */
-    private int worldHeight;
 
     /**
      * Coordinates of the player
@@ -66,24 +60,6 @@ public class GameView extends View {
      */
     private Collisionneur collisionneur;
 
-    /**
-     * Manage the gravity
-     */
-    private Gravity gravity;
-
-    /**
-     * Get the size of the screen
-     */
-    private final DisplayMetrics displayMetrics = new DisplayMetrics();
-    /**
-     * Width of the current window
-     */
-    private final float screenWidth = displayMetrics.widthPixels;
-
-    /**
-     * Height of the current window
-     */
-    private final float screenHeight = displayMetrics.heightPixels;
 
     /**
      * Constructor of the MyCanvas, it will draw the map and the player
@@ -95,18 +71,13 @@ public class GameView extends View {
 
     /**
      * Sets the different variables of the environment
-     * @param worldWidth width of the current world
-     * @param worldHeight height of the current world
      * @param cellsize size of the side of a bloc
      */
-    public void setEnvironment(int worldWidth, int worldHeight, int cellsize, HashMap<String,Bitmap> assets, Collisionneur collisionneur, Gravity gravity){
-        this.worldWidth = worldWidth;
-        this.worldHeight = worldHeight;
+    public void setEnvironment( int cellsize, HashMap<String,Bitmap> assets, Collisionneur collisionneur){
         this.cellSize = cellsize;
         this.assets = assets;
         this.coord = new Coordinates();
         this.collisionneur = collisionneur;
-        this.gravity = gravity;
         invalidate();
     }
 
@@ -134,19 +105,10 @@ public class GameView extends View {
         super.onDraw(canvas);
         drawMap(canvas);
         //Dessine steve
-        canvas.drawBitmap(player.getTexture(), (float) getWidth()/2, (float)getHeight()/4, null);
-        canvas.drawBitmap(player.getHeadTexture(), (float) getWidth()/2, (float) getHeight()/4, null);
-        //collision
-        //bottomCollision();
-        gravity.gravityPlayer();
-        if(collisionneur.bottomBlock().type == Bloc.Type.air){
-            movePlayer.moveDown(cellSize);
-            Log.d("GameView y ", " " + collisionneur.yIndexMap);
-        }
+        canvas.drawBitmap(player.getTexture(), (float) getWidth()/2, (float)getHeight()/2-2*cellSize, null);
+        canvas.drawBitmap(player.getHeadTexture(), (float) getWidth()/2, (float) getHeight()/2-2*cellSize, null);
+        Log.d("GameView Loop", "  " + player.getSpeedY());
     }
-
-
-
 
     /**
      * Method which draw the map
@@ -167,7 +129,6 @@ public class GameView extends View {
                 if(map.getMap()[x][y].type != Bloc.Type.air){
                     canvas.drawBitmap(map.getMap()[x][y].texture, (int)coord.x, (int)coord.y, paint);
                     distanceLeft += cellSize;
-
                 }
             }
             distanceLeft = 0;

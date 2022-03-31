@@ -17,7 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -35,7 +38,7 @@ import fr.iut.minecraft2d.model.player.Moves;
 /**
  * This activity class is used to manage the game
  */
-public class PlayingActivity extends Activity {
+public class PlayingActivity extends AppCompatActivity {
 
     /**
      * Gamemanager which manage the player and his moves
@@ -85,7 +88,6 @@ public class PlayingActivity extends Activity {
      */
     private Loader loader;
 
-
     /**
      * This method will draw the map, the player
      * It will create the instance of the move system
@@ -107,16 +109,15 @@ public class PlayingActivity extends Activity {
 
         //loading assets, map and player
         drawableManager = DrawableManager.getInstance();
-        drawableManager.loadBitmaps(this, cellsize);
+
         setContentView(R.layout.playing_layout);
         linearLayout = findViewById(R.id.linearLayout);
         canvas = new GameView(this);
-        gameManager = new GameManager(canvas, worldWidth,  worldHeight, loadBitmaps(), cellsize);
+        gameManager = new GameManager(canvas, worldWidth,  worldHeight, drawableManager.loadBitmaps(this, cellsize), cellsize);
         gameManager.setGameView();
 
         linearLayout.addView(canvas);
         ImageView.generateViewId();
-
 
         //Preparing the data to load
         loader = new FileLoader();
@@ -247,36 +248,18 @@ public class PlayingActivity extends Activity {
     }
 
     /**
-     * This method will create the map
-     * @return assets
+     * This method will bring the player on block down
+     * @param view the current view
      */
-    public HashMap<String,Bitmap> loadBitmaps(){
-
-        HashMap<String, Bitmap> assets = new HashMap<>();
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inMutable = true;
-
-        assets.put("bedrock",BitmapFactory.decodeResource(getResources(), R.drawable.bedrock, options));
-        assets.put("dirt",BitmapFactory.decodeResource(getResources(), R.drawable.dirt,options));
-        assets.put("grass",BitmapFactory.decodeResource(getResources(), R.drawable.grass, options));
-        assets.put("leaves",BitmapFactory.decodeResource(getResources(), R.drawable.leaves,options));
-        assets.put("stone",BitmapFactory.decodeResource(getResources(), R.drawable.stone,options));
-        assets.put("wood",BitmapFactory.decodeResource(getResources(), R.drawable.wood,options));
-
-        //Rescale of all blocks to the actuel cellsize
-        for(String key : assets.keySet()){
-            Bitmap b = assets.get(key);
-            b = Bitmap.createScaledBitmap(assets.get(key), cellsize,cellsize, true);
-            assets.put(key, b);
-        }
-
-        //addind the player's texture
-        Bitmap steve = BitmapFactory.decodeResource(getResources(), R.drawable.steve);
-        assets.put("player", Bitmap.createScaledBitmap(steve, cellsize/2,cellsize + cellsize/2, true));
-        Bitmap steveHead = BitmapFactory.decodeResource(getResources(),R.drawable.steve_head);
-        assets.put("head", Bitmap.createScaledBitmap(steveHead, cellsize/2,cellsize/2,true));
-
-        return assets;
+    @SuppressLint("ClickableViewAccessibility")
+    public void go_down(View view){
+        final Button button = (Button) findViewById(R.id.buttonMoveDown);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameManager.updateCoordoninates(Moves.DOWN, canvas);
+            }
+        });
     }
 
     /**
@@ -286,7 +269,6 @@ public class PlayingActivity extends Activity {
     public void return_home(View view) {
         finish();
     }
-
 
     /**
      * Live cycle of the activity
@@ -314,15 +296,15 @@ public class PlayingActivity extends Activity {
 
        // fileSaver.save(String.valueOf(counter),this);
         Log.d("PlayingActivity.java","onDestroy");
+        Toast.makeText(getApplicationContext(), "Partie supprimée", Toast.LENGTH_LONG).show();
         super.onDestroy();
 
     }
 
     @Override
     protected void onPause() {
-
         //fileSaver.save(String.valueOf(counter),this);
-        Log.d("PlayingActivity.java","OnPause");
+        Toast.makeText(getApplicationContext(), "Partie en pause", Toast.LENGTH_LONG).show();
         super.onPause();
     }
 
